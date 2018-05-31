@@ -1,0 +1,56 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+  </head>
+  <body>
+      <main>
+          <div id="x"></div>
+          
+      </main>
+      <script>
+      keys = {'0': {0:'q',1:'w',2:'e',3:'r',4:'t',5:'y',6:'u',7:'i',8:'o',9:'p',length:'10'},
+				'1': {0:'a',1:'s',2:'d',3:'f',4:'g',5:'h',6:'j',7:'k',8:'l',length:'9'},
+				'2': {0:'z',1:'x',2:'c',3:'v',4:'b',5:'n',6:'m',length:'7'},
+				length:'3'
+                }
+        hash = {'q':'qq.com','l':'LOL.com','g':'goglo.com'}        
+        hashInLocalStorage = JSON.parse(localStorage.getItem('aaa') || 'null')
+        if (hashInLocalStorage){hash = hashInLocalStorage}
+        index=0
+        while (index<keys['length']){
+            bbb = document.createElement('div')
+            x.appendChild(bbb)
+            index2=0
+            ccc=keys[index]
+                while (index2<ccc['length']){
+                    ddd = document.createElement('kbd')
+                    ddd.textContent=ccc[index2]
+                    button1=document.createElement('button')
+                    button1.textContent="nihao"
+                    button1.id=ccc[index2]
+                    button1.onclick = function(xxx){
+                        key =xxx['target']['id']
+                        uuu=prompt('输入网址')
+                        hash[key]=uuu
+                        localStorage.setItem('qwer',JSON.stringify(hash))
+                    }
+                    ddd.appendChild(button1)
+                    bbb.appendChild(ddd)
+                    index2=index2+1
+                }
+                index=index+1
+        }
+
+        document.onkeypress=function(xxx){
+            console.log('nihao')
+            key=xxx['key']
+            website=hash[key]
+            window.open('http://'+website,'_blank')
+        }
+      </script>
+  </body>
+  </html>

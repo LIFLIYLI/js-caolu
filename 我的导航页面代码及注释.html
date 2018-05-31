@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <main id="x">
+
+    </main>
+    <script>
+        keys = {
+            '0':{0:'q',1:'w',2:'e',3:'r',4:'t',5:'y',6:'u',7:'i',8:'o',9:'p',length:'10'},
+            '1':{0:'a',1:'s',2:'d',3:'f',4:'g',5:'h',6:'j',7:'k',8:'l',length:'9'},
+            '2':{0:'z',1:'x',2:'c',3:'v',4:'b',5:'n',6:'m',length:'7'},
+        length:'3'
+        }
+        hash = {q:'qq.com',w:'weibo.com',y:'yahu.com',u:'uucom',i:'iqiyi.com',g:'github.com',l:'lol.com',z:'zhihu.com',v:'vivo.com'}
+    hashInLocalStorage =JSON.parse(localStorage.getItem('shuibian1') || 'null')    //编辑后的hash替换原hash,hashInLocalStorage为更改后在服务器存贮的hash。
+    if(hashInLocalStorage){hash=hashInLocalStorage}    //编辑后的hash替换原hash,hashInLocalStorage为更改后在服务器存贮的hash。
+    index=0    //index先赋值为0
+    while (index<keys['length']){                     //当index值小于keys['length]的值事（10  9   7）
+        eee = document.createElement('div')     //则创建一个div标签存在eee里面
+        x.appendChild(eee)      //eee给（id为x的标签）当儿子
+            index2=0      //indexe2赋值为0
+            vill = keys[index]      //临时设置vill等于keys[index2]的值，（q~p a~l z~m)
+            while (index2<vill['length']){       //当indexe2小于vill['length]的值时，（10  9   7）
+                qqq = document.createElement('kbd')     //创建一个kbd标签存在qqq里面
+                qqq.textContent=vill[index2]      //使这个qqq文件的文本内容为vill[index2]，（q~p a~l z~m)
+                button1 =document.createElement('button')     //创建一个button标签存在button1里面
+                button1.textContent ='编辑'      //这个button1的文本内容为‘编辑’两个字
+                button1.id =vill[index2]      //使这个button的id等于vill[index2],(q~p a~l z~m)
+                button1.onclick = function(qwer){     //创建一个鼠标点击事件，（点击的所有信息全部存在名字qwer中）
+                    key=qwer['target']['id']        //让key等于qwer中的target中的id，这个id为用户鼠标点击的那个kbd。让key等于这个键（q~m)
+                    xxx=prompt('给我一个网址')    //使之点击时弹出一个对话框，并且记录用户输入的信息，让xxx等于这个信息。
+                    hash[key]=xxx    //使hash[key]等于这个xxx,
+                    localStorage.setItem('yyy',JSON.stringify(hash))   //
+                    }
+                qqq.appendChild(button1)   //button1给qqq当儿子
+                eee.appendChild(qqq)     //qqq给eee当儿子
+                index2 = index2+1
+            }     
+    index = index+1
+    }
+
+    document.onkeypress=function(qwer){     //创建一个键盘监听事件，事件的内容都存取qwer中
+        key = qwer['key']   //让key等于qwer中的key的值，（用户键盘按击的kbd)
+        website = hash[key]   //使website等于hash[key]的值，（上面预存的网址）
+        window.open('http://'+website,'_blank')   //在新窗口打开这个网址，需要在前加一个协议，
+
+    }
+    </script>
+</body>
+</html>
